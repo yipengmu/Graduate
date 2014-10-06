@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TabWidget">
+        <attr name="bottom_labels" format="reference" />
+    </declare-styleable>
+    <!-- 首页导航 -->
+    <string-array name="bottom_bar_labels">
+        <item>@string/just_graduate</item>
+        <item>@string/rank_band</item>
+        <item>@string/gao_kao</item>
+        <item>@string/group_self</item>
+    </string-array>
+    <!-- 分类 -->
+    <string-array name="cate_list">
+        <item>@string/recommend</item>
+        <item>@string/jacket</item>
+        <item>@string/skirt</item>
+        <item>@string/trousers</item>
+        <item>@string/shoes</item>
+        <item>@string/bag</item>
+        <item>@string/accessories</item>
+    </string-array>
+
+</resources>

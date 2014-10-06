@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="10dp"
+    android:background="@drawable/bg_home_dark">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/jg_icon_default_pic"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_user_face" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_margin="6dp"
+        android:layout_height="0.1px"
+        android:background="#ffffee" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        style="@style/white_20"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        android:text="工资水平"
+        android:id="@+id/tv_paylevel" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        style="@style/white_20"
+        android:text="工作地点"
+        android:id="@+id/tv_workplace" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        android:layout_marginTop="4dp"
+        style="@style/white_20"
+        android:layout_height="wrap_content"
+        android:text="所在行业"
+        android:id="@+id/tv_indurstry" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        style="@style/white_20"
+        android:text="考研留学"
+        android:id="@+id/tv_kaoyanliuxue" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        style="@style/white_20"
+        android:text="结婚生子"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/tv_weddingbirth" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_margin="6dp"
+        android:layout_height="0.1px"
+        android:background="#ffffee" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        style="@style/white_20"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:text="查大学"
+        android:id="@+id/tv_search_school" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        android:layout_height="wrap_content"
+        style="@style/white_20"
+        android:layout_marginTop="4dp"
+        android:text="学校美食"
+        android:id="@+id/tv_school_food" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        android:layout_height="wrap_content"
+        style="@style/white_20"
+        android:layout_marginTop="4dp"
+        android:text="学长吐槽"
+        android:id="@+id/tv_brother_tell" />
+</LinearLayout>
