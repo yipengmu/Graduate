@@ -1,24 +1,26 @@
-package com.laomu.justgraduate.base;
+package com.laomu.justgraduate.modules.settings;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.laomu.justgraduate.R;
+import com.laomu.justgraduate.base.BaseActivity;
 
-public class JGBaseActivity extends ActionBarActivity {
+public class SettingsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_jgbase);
+        setContentView(R.layout.activity_settings);
+        getSupportFragmentManager().beginTransaction().replace(R.id.setting_container, new SettingFragment()).commit();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.jgbase, menu);
+        getMenuInflater().inflate(R.menu.settings, menu);
         return true;
     }
 

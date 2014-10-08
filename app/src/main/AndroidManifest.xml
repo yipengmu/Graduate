@@ -3,16 +3,18 @@
     package="com.laomu.justgraduate" >
 
     <application
+        android:name=".application.JGApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".HomeActivity"
+            android:name=".modules.homepage.HomeActivity"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name=".modules.splash.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        <activity
+            android:name=".modules.splash.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".base.JGBaseActivity"
+            android:name=".base.BaseActivity"
             android:label="@string/title_activity_jgbase" >
+        </activity>
+        <activity
+            android:name=".modules.settings.SettingsActivity"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 

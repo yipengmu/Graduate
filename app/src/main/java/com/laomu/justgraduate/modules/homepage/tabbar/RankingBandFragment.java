@@ -1,4 +1,4 @@
-package com.laomu.justgraduate.modules.tabbar;
+package com.laomu.justgraduate.modules.homepage.tabbar;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.laomu.justgraduate.R;
+import com.laomu.justgraduate.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +20,7 @@ import com.laomu.justgraduate.R;
  * create an instance of this fragment.
  *
  */
-public class RankingBandFragment extends Fragment {
+public class RankingBandFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

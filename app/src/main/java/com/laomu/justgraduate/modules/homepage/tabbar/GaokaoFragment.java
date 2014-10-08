@@ -1,4 +1,4 @@
-package com.laomu.justgraduate.modules.tabbar;
+package com.laomu.justgraduate.modules.homepage.tabbar;
 
 
 
@@ -9,14 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.laomu.justgraduate.R;
+import com.laomu.justgraduate.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link JustGraduateFragment#newInstance} factory method to
+ * Use the {@link GaokaoFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class JustGraduateFragment extends Fragment {
+public class GaokaoFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,18 +34,18 @@ public class JustGraduateFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment JustGraduateFragment.
+     * @return A new instance of fragment GaokaoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static JustGraduateFragment newInstance(String param1, String param2) {
-        JustGraduateFragment fragment = new JustGraduateFragment();
+    public static GaokaoFragment newInstance(String param1, String param2) {
+        GaokaoFragment fragment = new GaokaoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-    public JustGraduateFragment() {
+    public GaokaoFragment() {
         // Required empty public constructor
     }
 
@@ -61,7 +62,7 @@ public class JustGraduateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_just_graduate, container, false);
+        return inflater.inflate(R.layout.fragment_gaokao, container, false);
     }
 
 

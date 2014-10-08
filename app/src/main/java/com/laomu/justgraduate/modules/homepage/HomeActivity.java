@@ -1,28 +1,24 @@
-package com.laomu.justgraduate;
+package com.laomu.justgraduate.modules.homepage;
 
-import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.laomu.justgraduate.common.CommonDefine;
+import com.laomu.justgraduate.R;
+import com.laomu.justgraduate.application.CommonDefine;
 import com.laomu.justgraduate.common.custormviews.JGTabbarView;
 import com.laomu.justgraduate.common.pagemapping.JGPageJumper;
 import com.laomu.justgraduate.modules.hotactions.JGHotActionsFragment;
-import com.laomu.justgraduate.modules.tabbar.JustGraduateFragment;
-import com.laomu.justgraduate.modules.tabbar.RankingBandFragment;
+import com.laomu.justgraduate.modules.settings.SettingsActivity;
+import com.laomu.justgraduate.modules.homepage.tabbar.JustGraduateFragment;
+import com.laomu.justgraduate.modules.homepage.tabbar.RankingBandFragment;
 
 
 public class HomeActivity extends ActionBarActivity
@@ -116,6 +112,7 @@ public class HomeActivity extends ActionBarActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            JGPageJumper.getInstance(this).openPageByActivity(HomeActivity.this, SettingsActivity.class);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -125,7 +122,7 @@ public class HomeActivity extends ActionBarActivity
     public void onBackPressed() {
         long secondtime = System.currentTimeMillis();
         if (secondtime - mFirstime > 3000) {
-            Toast.makeText(HomeActivity.this, "再按一次返回键退出", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "再按一次就退出", Toast.LENGTH_SHORT).show();
             mFirstime = System.currentTimeMillis();
             return ;
         } else {
@@ -144,50 +141,6 @@ public class HomeActivity extends ActionBarActivity
         JGPageJumper.getInstance(this).openPage(CommonDefine.TABBAR_FRAGMENT_PAGES[index], false);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-        static int posIndex = -1;
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            posIndex = sectionNumber;
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-            TextView tvLabel = (TextView) rootView.findViewById(R.id.section_label);
-            tvLabel.setText(CommonDefine.DRAWER_STRING_LIST_CONTENT[posIndex] + "");
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((HomeActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
-
-
-    }
 
 }

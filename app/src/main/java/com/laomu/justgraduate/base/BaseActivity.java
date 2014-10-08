@@ -1,47 +1,24 @@
-package com.laomu.justgraduate.modules.splash;
+package com.laomu.justgraduate.base;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.laomu.justgraduate.modules.homepage.HomeActivity;
 import com.laomu.justgraduate.R;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class SplashActivity extends Activity{
-
-    public SplashActivity() {
-    }
+public class BaseActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
-        Timer jumperTimer = new Timer();
-        jumperTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                JumpHomeActivity();
-            }
-        },1500);
-    }
-
-    private void JumpHomeActivity() {
-        startActivity(new Intent(this,HomeActivity.class));
-        overridePendingTransition(R.anim.jg_alpha_in,R.anim.jg_alpha_out);
-        finish();
+//        setContentView(R.layout.activity_jgbase);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.splash, menu);
+        getMenuInflater().inflate(R.menu.jgbase, menu);
         return true;
     }
 

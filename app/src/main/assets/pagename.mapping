@@ -1,0 +1,8 @@
+{
+    "pagenames": {
+        "justgraduate": "com.laomu.justgraduate.modules.homepage.tabbar.JustGraduateFragment",
+        "gaokao": "com.laomu.justgraduate.modules.homepage.tabbar.GaokaoFragment",
+        "rankingbrand": "com.laomu.justgraduate.modules.homepage.tabbar.RankingBandFragment",
+        "groupself": "com.laomu.justgraduate.modules.homepage.tabbar.GroupSelfFragment"
+    }
+}

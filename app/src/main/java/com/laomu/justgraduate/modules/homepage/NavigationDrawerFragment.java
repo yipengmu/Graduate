@@ -1,4 +1,4 @@
-package com.laomu.justgraduate;
+package com.laomu.justgraduate.modules.homepage;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -17,15 +17,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.laomu.justgraduate.common.CommonDefine;
+import com.laomu.justgraduate.R;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.

@@ -14,6 +14,10 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 
 import com.laomu.justgraduate.R;
+import com.laomu.justgraduate.application.JGApplication;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 
 public class CommonUtils {
@@ -98,4 +102,19 @@ public class CommonUtils {
 		return info.versionName;
 	}
 
+    public static String getFromAssets(String fileName) {
+        try {
+            InputStreamReader inputReader = new InputStreamReader(
+                    JGApplication.appContext.getAssets().open(fileName));
+            BufferedReader bufReader = new BufferedReader(inputReader);
+            String line = "";
+            String Result = "";
+            while ((line = bufReader.readLine()) != null)
+                Result += line;
+            return Result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }

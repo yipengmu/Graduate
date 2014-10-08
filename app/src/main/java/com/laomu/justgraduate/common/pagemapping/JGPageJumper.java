@@ -1,16 +1,22 @@
 package com.laomu.justgraduate.common.pagemapping;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 
 import com.laomu.justgraduate.R;
-import com.laomu.justgraduate.modules.tabbar.GaokaoFragment;
-import com.laomu.justgraduate.modules.tabbar.GroupSelfFragment;
-import com.laomu.justgraduate.modules.tabbar.JustGraduateFragment;
-import com.laomu.justgraduate.modules.tabbar.RankingBandFragment;
+import com.laomu.justgraduate.modules.settings.SettingFragment;
+import com.laomu.justgraduate.modules.homepage.tabbar.GaokaoFragment;
+import com.laomu.justgraduate.modules.homepage.tabbar.GroupSelfFragment;
+import com.laomu.justgraduate.modules.homepage.tabbar.JustGraduateFragment;
+import com.laomu.justgraduate.modules.homepage.tabbar.RankingBandFragment;
+
+import java.util.HashMap;
 
 /**
  * Created by yipengmu on 2014/10/5.
@@ -20,8 +26,11 @@ public class JGPageJumper {
     private static JGPageJumper ins;
     private static FragmentTransaction mFragmentTransaction;
 
+    private HashMap<String, String> mPageNameMapping;
+
     public JGPageJumper(FragmentActivity act) {
         mFragmentManager = act.getSupportFragmentManager();
+        mPageNameMapping = PageNamgeManeger.getPageNameMap();
     }
 
     public static JGPageJumper getInstance(FragmentActivity act) {
@@ -32,32 +41,59 @@ public class JGPageJumper {
         return ins;
     }
 
-    public void openPage(String pageName,Boolean needAddToBackStack) {
-        if(mFragmentManager == null) {
+    public void openPage(String pageName, Boolean needAddToBackStack) {
+        if (mFragmentManager == null) {
             return;
         }
 
-        boolean defaultTrue = true;
         mFragmentTransaction = mFragmentManager.beginTransaction();
-
-        mFragmentTransaction.replace(R.id.container, getFragmentFromFragmentName(pageName),pageName);
-        if(needAddToBackStack != null && needAddToBackStack) {
+        mFragmentTransaction.replace(R.id.container, getFragmentFromFragmentName(pageName), pageName);
+        if (needAddToBackStack != null && needAddToBackStack) {
             mFragmentTransaction.addToBackStack(pageName);
         }
         mFragmentTransaction.commit();
 
     }
 
+
+    public void openPageByActivity(Context context, Class<?> activity) {
+        Intent intent = new Intent(context, activity);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        context.startActivity(intent);
+    }
+
+    public void openPageByActivity(Activity context, Class<?> activity, int requestCode) {
+        Intent intent = new Intent(context, activity);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        context.startActivityForResult(intent, requestCode);
+    }
+
     public Fragment getFragmentFromFragmentName(String pageNmae) {
-        if("justgraduate".equals(pageNmae)){
-            return new JustGraduateFragment();
-        }else   if("gaokao".equals(pageNmae)){
-            return new GaokaoFragment();
-        }else   if("rankingbrand".equals(pageNmae)){
-            return new RankingBandFragment();
-        }else   if("groupself".equals(pageNmae)){
-            return new GroupSelfFragment();
+        if (mPageNameMapping == null) {
+            return null;
         }
-        return null;
+
+        String pageValue = mPageNameMapping.get(pageNmae);
+        if (!TextUtils.isEmpty(pageNmae)) {
+            try {
+                return (Fragment) Class.forName(pageValue).newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+            return null;
+//        }
+//
+//            if ("justgraduate".equals(pageNmae)) {
+//                return new JustGraduateFragment();
+//            } else if ("gaokao".equals(pageNmae)) {
+//                return new GaokaoFragment();
+//            } else if ("rankingbrand".equals(pageNmae)) {
+//                return new RankingBandFragment();
+//            } else if ("groupself".equals(pageNmae)) {
+//                return new GroupSelfFragment();
+//            } else if ("settings".equals(pageNmae)) {
+//                return new SettingFragment();
+//            }
     }
 }
