@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import com.laomu.justgraduate.R;
 import com.laomu.justgraduate.application.JGApplication;
@@ -116,5 +117,10 @@ public class CommonUtils {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static void toast(String msg) {
+        Toast.makeText(JGApplication.appContext,msg,Toast.LENGTH_SHORT).show();
+
     }
 }

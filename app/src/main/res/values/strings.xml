@@ -42,5 +42,12 @@
     <string name="group_self">圈子</string>
     <string name="hello_blank_fragment">刚毕业</string>
     <string name="title_activity_settings">设置</string>
+    <string name="title_activity_login">LoginActivity</string>
 
+    <string name="hello_world">刚毕业</string>
+    <string name="user_id">帐号:</string>
+    <string name="user_password">密码:</string>
+    <string name="login">登录</string>
+    <string name="logout">登出</string>
+    <string name="signin">注册</string>
 </resources>

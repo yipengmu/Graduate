@@ -4,9 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 import com.laomu.justgraduate.R;
 
-public class BaseActivity extends ActionBarActivity {
+public class BaseActivity extends ActionBarActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +34,10 @@ public class BaseActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

@@ -22,6 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.laomu.justgraduate.R;
+import com.laomu.justgraduate.common.pagemapping.JGPageJumper;
+import com.laomu.justgraduate.modules.login.LoginActivity;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -305,7 +307,7 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         String jumperName = "";
         switch (view.getId()) {
             case R.id.iv_user_face:
-                jumperName = "paylevel";
+                JGPageJumper.getInstance(getActivity()).openPageByActivity(getActivity(), LoginActivity.class);
                 break;
             case R.id.tv_paylevel:
                 jumperName = "paylevel";
