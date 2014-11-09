@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.laomu.graduate.bean.User;
+import com.laomu.graduate.servlet.bean.UserBean;
 import com.laomu.graduate.utils.CommonUtil;
 
 public class DBManeger {
@@ -21,12 +21,25 @@ public class DBManeger {
 	 * 预处理对象
 	 */
 	private java.sql.PreparedStatement ps;
+	private static DBManeger ins;
+
+	public static DBManeger getIns() {
+		if (ins == null) {
+			ins = new DBManeger();
+		}
+		return ins;
+	}
+
+	public Connection getConnection() {
+		return conn;
+	}
 
 	private DBManeger() {
 		try {
 			Class.forName(driverClass);
 			conn = DriverManager.getConnection(url, user, password);
 			conn.createStatement().executeUpdate("use graduatedb");
+			// createDatabase(CommonDefine.SQLCREATEUSERINFO);
 		} catch (SQLException se) {
 			System.out.println(driverClass + "数据库加载失败");
 			se.printStackTrace();
@@ -36,87 +49,7 @@ public class DBManeger {
 		}
 	}
 
-	public boolean addUser(User userInfo) {
-		boolean result = false;
-		if(userInfo == null || CommonUtil.isEmpty(userInfo._uid) || CommonUtil.isEmpty(userInfo._upassword) || CommonUtil.isEmpty(userInfo._uname)){
-			return result;
-		}
-		try {
-
-			String sql = "insert into userinfo (_uid,_upassword,_uname) values (?,?,?)";
-			// sta =
-			// conn.prepareStatement("insert into tb_name (col1,col2,col2,col4) values (null,null,null,null)");
-
-			java.sql.PreparedStatement sta = conn.prepareStatement(sql);
-			sta.setString(1, userInfo._uid);
-			sta.setString(2, userInfo._upassword);
-			sta.setString(3, userInfo._uname);
-			sta.executeUpdate();
-
-			// java.sql.PreparedStatement sta = conn.prepareStatement(sql);
-			// sta.setString(1, userInfo._uid);
-			// sta.setString(2, userInfo._uname);
-			// sta.setString(2, userInfo._upassword);
-			// conn.prepareStatement(sql);
-			// conn.commit();
-			// conn.createStatement().execute("insert into userinfo vlaues("
-			// +user +")");
-			result =  true;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return result;
-	}
-
-	/**
-	 * 执行插入语句,并返回生成的主键
-	 * 
-	 * @param sql
-	 *            插入语句
-	 * @param objs
-	 *            参数列表
-	 * @return 插入语句返回的主键值
-	 * @throws SQLException
-	 */
-	public int insertAndReturnKey(String sql, Object... objs)
-			throws SQLException {
-		int countRow = 0;
-		int key = 0;
-
-		try {
-			getConnection();
-
-			conn.setAutoCommit(false);
-
-			ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			if (objs != null) {
-				for (int i = 0; i < objs.length; i++)
-					ps.setObject(i + 1, objs[i]);
-			}
-
-			countRow = ps.executeUpdate();
-			if (countRow > 0) {
-				ResultSet rs = ps.getGeneratedKeys();
-				if (rs.next())
-					key = rs.getInt(1);
-			}
-			conn.commit();
-		} catch (SQLException e) {
-			countRow = 0;
-			conn.rollback();
-			close();
-			throw e;
-		} finally {
-			if (conn != null) {
-				conn.setAutoCommit(true);
-			}
-			close();
-		}
-		return key;
-	}
-
-	public void execSql(String sql) {
+	public void createDatabase(String sql) {
 		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
@@ -138,17 +71,65 @@ public class DBManeger {
 		}
 	}
 
-	private static DBManeger ins;
-
-	public static DBManeger getIns() {
-		if (ins == null) {
-			ins = new DBManeger();
+	public boolean addUser(UserBean userInfo) {
+		boolean result = false;
+		if (userInfo == null || CommonUtil.isEmpty(userInfo.uid)
+				|| CommonUtil.isEmpty(userInfo.upassword)
+				|| CommonUtil.isEmpty(userInfo.uname)) {
+			return result;
 		}
-		return ins;
+		try {
+			String sql = "insert into userinfo (uid,upassword,uname) values (?,?,?)";
+			java.sql.PreparedStatement sta = conn.prepareStatement(sql);
+			sta.setString(1, userInfo.uid);
+			sta.setString(2, userInfo.upassword);
+			sta.setString(3, userInfo.uname);
+			sta.executeUpdate();
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
-	public Connection getConnection() {
-		return conn;
+	public boolean selectUserByUserId(String userId) {
+		if (CommonUtil.isEmpty(userId)) {
+			return false;
+		}
+		try {
+			String sql = "select * from userinfo where uid=" + userId;
+			java.sql.PreparedStatement sta = conn.prepareStatement(sql);
+			ResultSet results = sta.executeQuery(sql);
+			if (results != null && results.getRow() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	public boolean selectUserByIdAndPassword(String uid, String upassword) {
+		if (CommonUtil.isEmpty(uid) || CommonUtil.isEmpty(upassword)) {
+			return false;
+		}
+		try {
+			String sql = "select * from userinfo where uid='" + uid
+					+ "' and upassword='" + upassword + "'";
+			ResultSet results = conn.createStatement().executeQuery(sql);
+
+			if (results != null) {
+				results.last();
+				if (results.getRow() > 0) {
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 	public void close() {
