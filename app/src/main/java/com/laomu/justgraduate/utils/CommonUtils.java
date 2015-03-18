@@ -2,12 +2,16 @@ package com.laomu.justgraduate.utils;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -16,16 +20,21 @@ import android.widget.Toast;
 
 import com.laomu.justgraduate.R;
 import com.laomu.justgraduate.application.JGApplication;
+import com.laomu.justgraduate.preference.PreferenceManager;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 
 
 public class CommonUtils {
 
 	private static final String TAG = "CommonUtils";
 
-	public static void launchActivity(Context context, Class<?> activity) {
+    public static void launchActivity(Context context, Class<?> activity) {
 		Intent intent = new Intent(context, activity);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		context.startActivity(intent);
@@ -122,5 +131,87 @@ public class CommonUtils {
     public static void toast(String msg) {
         Toast.makeText(JGApplication.appContext,msg,Toast.LENGTH_SHORT).show();
 
+    }
+
+    public static boolean hasShortcut() {
+        return PreferenceManager.getShortCutIsAdded();
+    }
+
+    /**
+     * 为程序创建桌面快捷方式
+     */
+    public static void addShortcut(Context context) {
+        Intent shortcut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+
+        //快捷方式的名称
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, context.getString(R.string.app_name));
+        shortcut.putExtra("duplicate", false); //不允许重复创建
+
+        Intent shortcutIntent = new Intent(Intent.ACTION_MAIN);
+        shortcutIntent.setClassName(context, context.getClass().getName());
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+
+        //快捷方式的图标
+        Intent.ShortcutIconResource iconRes = Intent.ShortcutIconResource.fromContext(context, R.drawable.ic_launcher);
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconRes);
+
+        PreferenceManager.setShortCutAdded();
+
+        context.sendBroadcast(shortcut);
+    }
+
+    public static  void delShortcut(Activity activity){
+        Intent shortcut = new Intent("com.android.launcher.action.UNINSTALL_SHORTCUT");
+
+        //快捷方式的名称
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, activity.getString(R.string.app_name));
+        String appClass = activity.getPackageName() + "." +activity.getLocalClassName();
+        ComponentName comp = new ComponentName(activity.getPackageName(), appClass);
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, new Intent(Intent.ACTION_MAIN).setComponent(comp));
+
+        activity.sendBroadcast(shortcut);
+
+    }
+
+    public static boolean copyFile(String fileToPath, String fileName, InputStream in)
+            throws Exception {
+        boolean copySucc = false;
+        OutputStream out = null;
+        try {
+            File fdir = new File(fileToPath);
+            if(!fdir.exists()){
+                fdir.mkdirs();
+            }
+
+            File fFile = new File(fileToPath + File.separator + fileName);
+
+            if(!fFile.exists()){
+                fFile.createNewFile();
+            }
+
+            out = new FileOutputStream(fFile);
+            byte[] buffer = new byte[1024];
+            while (true) {
+                int ins = in.read(buffer);
+                if (ins == -1) {
+                    break;
+                }
+
+                out.write(buffer, 0, ins);
+            }
+            copySucc = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+            if (out != null) {
+                out.flush();
+                out.close();
+            }
+        }
+
+        return copySucc;
     }
 }

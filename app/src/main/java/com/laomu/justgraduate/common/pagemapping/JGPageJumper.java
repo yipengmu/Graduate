@@ -1,7 +1,6 @@
 package com.laomu.justgraduate.common.pagemapping;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,11 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 
 import com.laomu.justgraduate.R;
-import com.laomu.justgraduate.modules.settings.SettingFragment;
-import com.laomu.justgraduate.modules.homepage.tabbar.GaokaoFragment;
-import com.laomu.justgraduate.modules.homepage.tabbar.GroupSelfFragment;
-import com.laomu.justgraduate.modules.homepage.tabbar.JustGraduateFragment;
-import com.laomu.justgraduate.modules.homepage.tabbar.RankingBandFragment;
 
 import java.util.HashMap;
 
@@ -47,6 +41,7 @@ public class JGPageJumper {
         }
 
         mFragmentTransaction = mFragmentManager.beginTransaction();
+        //通过pagename 进行统一跳转拦截处理
         mFragmentTransaction.replace(R.id.container, getFragmentFromFragmentName(pageName), pageName);
         if (needAddToBackStack != null && needAddToBackStack) {
             mFragmentTransaction.addToBackStack(pageName);
@@ -56,10 +51,11 @@ public class JGPageJumper {
     }
 
 
-    public void openPageByActivity(Context context, Class<?> activity) {
-        Intent intent = new Intent(context, activity);
+    public void openPageByActivity(Activity act, Class<?> actClass) {
+        Intent intent = new Intent(act, actClass);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        context.startActivity(intent);
+        act.startActivity(intent);
+        act.overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
     }
 
     public void openPageByActivity(Activity context, Class<?> activity, int requestCode) {

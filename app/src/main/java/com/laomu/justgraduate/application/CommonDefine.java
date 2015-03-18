@@ -8,4 +8,12 @@ public class CommonDefine {
     public static final String[] TABBAR_FRAGMENT_PAGES = {"justgraduate","rankingbrand","gaokao","groupself"};
 
 
+    public static String REMOTE_ONLINE_HOST = "www.gangbiye.com";
+
+    public final static String PREFS_FILE_NAME = "com.laomu.justgraduate";
+    public static String KEY_SHORT_CUT_EXISTS = "key_short_cut_exists";
+
+    public static String KEY_DB_FILE_COPYED = "key_db_file_copyed";
+
+    public static String LOCAL_IP  = "192.168.1.110";
 }

@@ -8,12 +8,14 @@ import android.view.MenuItem;
 
 import com.laomu.justgraduate.modules.homepage.HomeActivity;
 import com.laomu.justgraduate.R;
+import com.laomu.justgraduate.utils.CommonUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashActivity extends Activity{
 
+    long showTime = 150L;
     public SplashActivity() {
     }
 
@@ -22,13 +24,27 @@ public class SplashActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        checkShotCut();
+
         Timer jumperTimer = new Timer();
         jumperTimer.schedule(new TimerTask() {
             @Override
             public void run() {
                 JumpHomeActivity();
             }
-        },1500);
+        },showTime);
+    }
+
+    private void checkShotCut() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (!CommonUtils.hasShortcut()) {
+                    CommonUtils.addShortcut(SplashActivity.this);
+                }
+            }
+        }).start();
+
     }
 
     private void JumpHomeActivity() {

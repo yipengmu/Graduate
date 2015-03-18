@@ -2,6 +2,7 @@ package com.laomu.justgraduate.modules.homepage;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -43,7 +44,7 @@ public class HomeActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+//        Debug.startMethodTracing("laomu_traceview_test");
         mFragmentManager = getSupportFragmentManager();
 
         initViews();

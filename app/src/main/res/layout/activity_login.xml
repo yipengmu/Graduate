@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,57 +8,105 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.laomu.justgraduate.modules.login.LoginActivity"
-    android:gravity="center_horizontal">
+    >
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_id"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_user_id" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_password"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_user_password"  />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:text="@string/login"
+            style="@style/btn_dark_gray_12"
+            android:id="@+id/btn_login" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/standard_dark_gray"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            ></View>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:text="微博登录"
+                style="@style/btn_dark_gray_12"
+                android:id="@+id/btn_signin_by_weibo" />
+
+            <Button
+                android:layout_marginLeft="30dp"
+                style="@style/btn_dark_gray_12"
+                android:text="QQ登录"
+                android:id="@+id/btn_signin_by_qq" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/user_id"/>
+            android:text="还没毕业?"
+            style="@style/dark_gray_12"
+            android:id="@+id/textView2" />
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_user_id" />
-
+        <Button
+            style="@style/btn_dark_gray_12"
+            android:layout_marginLeft="@dimen/page_standard_padding"
+            android:text="注册"
+            android:id="@+id/btn_signin" />
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_password"/>
-
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_user_password"  />
-
-    </LinearLayout>
-
-    <Button
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:background="@drawable/rect_white2gray"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:id="@+id/btn_login" />
-
-
-    <Button
-        android:layout_marginTop="130dp"
-        android:layout_width="wrap_content"
-        android:background="@drawable/rect_white2gray"
-        android:layout_height="wrap_content"
-        android:text="@string/signin"
-        android:id="@+id/btn_signin" />
-
-</LinearLayout>
+</RelativeLayout>

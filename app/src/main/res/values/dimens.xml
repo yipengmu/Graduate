@@ -6,4 +6,50 @@
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
+
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="h_f_height">48dp</dimen>
+
+    <dimen name="footer_with_button_height">55dp</dimen>
+
+    <dimen name="header_mid_text_size">22.0sp</dimen>
+    <dimen name="header_right_text_size">18sp</dimen>
+
+    <dimen name="page_standard_padding">10dp</dimen>
+
+    <dimen name="index_nav_height">65dp</dimen>
+
+    <dimen name="standard_divider_padding">5dp</dimen>
+
+    <dimen name="standard_text_size_0">12.0sp</dimen>
+    <dimen name="standard_text_size_1">14.0sp</dimen>
+    <dimen name="standard_text_size_2">16.0sp</dimen>
+
+    <dimen name="standard_waterfall_item_height">140dp</dimen>
+    <dimen name="standard_waterfall_item_padding">5dp</dimen>
+
+    <dimen name="standard_drawable_padding">3dp</dimen>
+
+    <dimen name="standard_text_line_spacing_extra">8dp</dimen>
+
+    <dimen name="haitao_detail_attrs_elements_margin">8dp</dimen>
+    <dimen name="haitao_detail_notice_elements_margin">9dp</dimen>
+
+    <dimen name="haitao_detail_attributes_item_text_padding">4dp</dimen>
+
+    <dimen name="taitao_detail_price_table_text_padding">8dp</dimen>
+    <dimen name="haitao_detail_price_table_row_key_padding_left">25dp</dimen>
+    <dimen name="haitao_detail_price_table_row_val_padding_left">45dp</dimen>
+
+    <dimen name="haitao_process_item_margin_top">12dp</dimen>
+    <dimen name="haitao_process_item_img_margin_left">12dp</dimen>
+    <dimen name="haitao_process_item_tag_margin_left">5dp</dimen>
+    <dimen name="haitao_process_item_text_margin_left">5dp</dimen>
+
+    <dimen name="shopping_cart_padding">10dp</dimen>
+    <dimen name="order_cell_height">40dp</dimen>
+
 </resources>

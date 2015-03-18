@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.laomu.justgraduate.R;
@@ -59,9 +60,13 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
-    private LinearLayout leftDrawerMenuLayout;
+    private RelativeLayout leftDrawerMenuLayout;
 
     private ImageView iv_user_face;
+
+    private TextView btn_login;
+    private TextView btn_signin;
+
     private TextView tv_paylevel;
     private TextView tv_workplace;
     private TextView tv_indurstry;
@@ -103,7 +108,7 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-       leftDrawerMenuLayout = (LinearLayout) inflater.inflate(
+       leftDrawerMenuLayout = (RelativeLayout) inflater.inflate(
                 R.layout.jg_drawer_left_menu_layout, container, false);
            findViews(leftDrawerMenuLayout);
 //        mDrawerListView = (ListView) inflater.inflate(
@@ -124,7 +129,7 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         return leftDrawerMenuLayout;
     }
 
-    private void findViews(LinearLayout rootView) {
+    private void findViews(RelativeLayout rootView) {
         iv_user_face = (ImageView) rootView.findViewById(R.id.iv_user_face);
         tv_paylevel = (TextView) rootView.findViewById(R.id.tv_paylevel);
         tv_workplace = (TextView) rootView.findViewById(R.id.tv_workplace);
@@ -135,6 +140,9 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         tv_school_food = (TextView) rootView.findViewById(R.id.tv_school_food);
         tv_brother_tell = (TextView) rootView.findViewById(R.id.tv_brother_tell);
 
+        btn_login = (TextView) rootView.findViewById(R.id.btn_login);
+        btn_signin = (TextView) rootView.findViewById(R.id.btn_signin);
+
         iv_user_face.setOnClickListener(this);
         tv_paylevel.setOnClickListener(this);
         tv_workplace.setOnClickListener(this);
@@ -144,6 +152,8 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         tv_search_school.setOnClickListener(this);
         tv_school_food.setOnClickListener(this);
         tv_brother_tell.setOnClickListener(this);
+        btn_login.setOnClickListener(this);
+        btn_signin.setOnClickListener(this);
     }
 
     public boolean isDrawerOpen() {
@@ -307,6 +317,9 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         String jumperName = "";
         switch (view.getId()) {
             case R.id.iv_user_face:
+                JGPageJumper.getInstance(getActivity()).openPageByActivity(getActivity(), LoginActivity.class);
+                break;
+            case R.id.btn_login:
                 JGPageJumper.getInstance(getActivity()).openPageByActivity(getActivity(), LoginActivity.class);
                 break;
             case R.id.tv_paylevel:
