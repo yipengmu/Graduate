@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.laomu.justgraduate.R;
@@ -16,9 +17,10 @@ import com.laomu.justgraduate.common.manager.AccountManager;
 import com.laomu.justgraduate.modules.login.account.Account;
 import com.laomu.justgraduate.modules.login.adapter.SigninListviewAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class SigninActivity extends ActionBarActivity {
+public class SigninActivity extends ActionBarActivity implements View.OnClickListener {
 
     private ListView listView;
     private SigninListviewAdapter mAdapter;
@@ -38,6 +40,9 @@ public class SigninActivity extends ActionBarActivity {
 
     private void initView() {
         listView = (ListView) findViewById(R.id.lv_content);
+        findViewById(R.id.rl_provice_section).setOnClickListener(this);
+        findViewById(R.id.rl_school_section).setOnClickListener(this);
+        findViewById(R.id.rl_univs_section).setOnClickListener(this);
 
         mAdapter = new SigninListviewAdapter();
         getDBdatasource();
@@ -46,9 +51,9 @@ public class SigninActivity extends ActionBarActivity {
     }
 
     private void getDBdatasource() {
-        provincesList = OrmDbManager.getInstance().getAllProvices();
-        schoolsList = OrmDbManager.getInstance().getAllSchools();
-        univsList = OrmDbManager.getInstance().getAllUniv();
+        provincesList = (ArrayList<Province>) OrmDbManager.getInstance().getAllProvices();
+        schoolsList = (ArrayList<School>) OrmDbManager.getInstance().getAllSchools();
+        univsList = (ArrayList<Univ>) OrmDbManager.getInstance().getAllUniv();
     }
 
 
@@ -72,5 +77,22 @@ public class SigninActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.rl_provice_section:
+                mAdapter.setDataSource(provincesList);
+                break;
+            case R.id.rl_univs_section:
+                mAdapter.setDataSource(univsList);
+                break;
+            case R.id.rl_school_section:
+                mAdapter.setDataSource(schoolsList);
+                break;
+        }
+
     }
 }

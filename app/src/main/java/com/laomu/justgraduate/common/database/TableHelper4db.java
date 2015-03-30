@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.laomu.justgraduate.common.datatype.Province;
+import com.laomu.justgraduate.common.datatype.School;
+import com.laomu.justgraduate.common.datatype.Univ;
 import com.laomu.justgraduate.modules.login.account.Account;
 
 public class TableHelper4db extends OrmLiteSqliteOpenHelper {
@@ -24,8 +27,10 @@ public class TableHelper4db extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase arg0, ConnectionSource arg1) {
 		try {
-			TableUtils.createTableIfNotExists(connectionSource, Account.class);
-//			TableUtils.createTableIfNotExists(connectionSource, NoteBean.class);
+			TableUtils.createTableIfNotExists(connectionSource, Province.class);
+            TableUtils.createTableIfNotExists(connectionSource, School.class);
+            TableUtils.createTableIfNotExists(connectionSource, Univ.class);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

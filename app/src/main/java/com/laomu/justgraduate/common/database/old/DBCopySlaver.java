@@ -27,16 +27,18 @@ public class DBCopySlaver {
 
         mContext = JGApplication.appContext;
         fileDBPath = mContext.getDatabasePath(DatabaseHelper.DATABASE_NAME).getParentFile().getPath();
+        boolean copySucc = false;
         try {
-            boolean copySucc = CommonUtils.copyFile(fileDBPath,DatabaseHelper.DATABASE_NAME, mContext.getAssets().open(DatabaseHelper.DATABASE_NAME));
+            copySucc = CommonUtils.copyFile(fileDBPath,DatabaseHelper.DATABASE_NAME, mContext.getAssets().open(DatabaseHelper.DATABASE_NAME));
 
-            if(copySucc){
-                PreferenceManager.setDBFileCopyed();
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        if(copySucc){
+            PreferenceManager.setDBFileCopyed();
+        }
     }
 
 

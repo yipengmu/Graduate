@@ -11,9 +11,10 @@
         android:id="@+id/textView" />
 
     <LinearLayout
+        android:id="@+id/ll_choose_section"
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true">
 
@@ -22,13 +23,42 @@
             android:layout_width="fill_parent"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout" >
+            android:id="@+id/rl_provice_section" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="学校"
+                android:text="省份（1）"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="请选择省份"
+                android:layout_toLeftOf="@+id/imageView"
+                android:id="@+id/textView9" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_arraw_right"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/imageView" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rl_univs_section" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="学校（2）"
                 android:id="@+id/textView4" />
 
             <TextView
@@ -52,14 +82,13 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rl_account_info">
+            android:id="@+id/rl_school_section">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="院系"
-                android:id="@+id/tv_shool_key" />
+                android:text="院系（3）"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +96,7 @@
                 android:layout_centerVertical="true"
                 android:text="请选择院系"
                 android:layout_toLeftOf="@+id/iv_arraw2"
-                android:id="@+id/textView3" />
+                android:id="@+id/tv_grade_choose_value" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -88,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="入学时间+学历"
+                android:text="入学时间+学历（4）"
                 android:id="@+id/textView6" />
 
             <TextView
@@ -110,23 +139,12 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="350dp"
+    <ListView
+        android:layout_below="@+id/ll_choose_section"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/page_standard_padding"
         android:background="#22cccccc"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/scrollView" >
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lv_content" />
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="fill_parent"
+        android:id="@+id/lv_content" />
 
 </RelativeLayout>

@@ -5,7 +5,6 @@
         <!-- Customize your theme here. -->
 
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
-        <item name="android:textColor">@color/standard_text_black</item>
 
     </style>
 
