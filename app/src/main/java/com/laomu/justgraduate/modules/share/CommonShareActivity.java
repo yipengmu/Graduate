@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 
 import com.laomu.justgraduate.R;
 import com.laomu.justgraduate.application.CommonDefine;
+import com.laomu.justgraduate.base.BaseActivity;
 import com.tencent.mm.sdk.openapi.BaseReq;
 import com.tencent.mm.sdk.openapi.BaseResp;
 import com.tencent.mm.sdk.openapi.ConstantsAPI;
@@ -16,7 +17,7 @@ import com.tencent.mm.sdk.openapi.ShowMessageFromWX;
 import com.tencent.mm.sdk.openapi.WXAppExtendObject;
 import com.tencent.mm.sdk.openapi.WXMediaMessage;
 
-public class CommonShareActivity extends Activity implements IWXAPIEventHandler {
+public class CommonShareActivity extends BaseActivity implements IWXAPIEventHandler {
 	private String mShareTextMsg = CommonDefine.SNS_SHARE_BUNDLE_MSG;
 	private String mShareUrl = CommonDefine.SNS_SHARE_BUNDLE_URL;
 	private String mShareBitmapUrl = CommonDefine.SNS_SHARE_BUNDLE_BITMAP_URL;

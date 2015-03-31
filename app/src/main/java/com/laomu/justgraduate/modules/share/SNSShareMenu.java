@@ -17,6 +17,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,12 +30,13 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.laomu.justgraduate.R;
+import com.laomu.justgraduate.common.pagemapping.JGPageJumper;
 import com.laomu.justgraduate.modules.share.weixin.WeixinManager;
 import com.laomu.justgraduate.utils.CommonUtils;
 
 public class SNSShareMenu {
 
-	private Context mContext;
+	private FragmentActivity mContext;
 	private Uri mPicUri;
 
 	private PopupWindow mMenu;
@@ -55,7 +57,7 @@ public class SNSShareMenu {
 	private String mPicUrl = null;
 	private String mTitleTag;
 
-	public SNSShareMenu(Context context) {
+	public SNSShareMenu(FragmentActivity context) {
 		mContext = context;
 
 		findViews();
@@ -99,7 +101,7 @@ public class SNSShareMenu {
 		mPicUrl = bitmapUrl;
 	}
 
-	public SNSShareMenu(Activity context, String picDir, String msgText) {
+	public SNSShareMenu(FragmentActivity context, String picDir, String msgText) {
 		mContext = context;
 
 		findViews();
@@ -206,8 +208,9 @@ public class SNSShareMenu {
 			intent.setType("text/plain");
 		}
 		try {
-			mContext.startActivity(info.intent);
-		} catch (Exception e) {
+            JGPageJumper.getInstance(mContext).openPageByActivity(mContext,intent);
+//            mContext.startActivity(info.intent);
+        } catch (Exception e) {
 		}
 	}
 

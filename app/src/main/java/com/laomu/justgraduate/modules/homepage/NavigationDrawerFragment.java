@@ -1,5 +1,6 @@
 package com.laomu.justgraduate.modules.homepage;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -317,10 +318,10 @@ public class NavigationDrawerFragment extends Fragment implements View.OnClickLi
         String jumperName = "";
         switch (view.getId()) {
             case R.id.iv_user_face:
-                JGPageJumper.getInstance(getActivity()).openPageByActivity(getActivity(), LoginActivity.class);
+                JGPageJumper.getInstance(getActivity()).openPageByActivity(getActivity(), new Intent(getActivity(), LoginActivity.class));
                 break;
             case R.id.btn_login:
-                JGPageJumper.getInstance(getActivity()).openPageByActivity(getActivity(), LoginActivity.class);
+                JGPageJumper.getInstance(getActivity()).openPageByActivity(getActivity(), new Intent(getActivity(),LoginActivity.class));
                 break;
             case R.id.tv_paylevel:
                 jumperName = "paylevel";

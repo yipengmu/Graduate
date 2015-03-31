@@ -51,8 +51,7 @@ public class JGPageJumper {
     }
 
 
-    public void openPageByActivity(Activity act, Class<?> actClass) {
-        Intent intent = new Intent(act, actClass);
+    public void openPageByActivity(Activity act, Intent intent) {
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         act.startActivity(intent);
         act.overridePendingTransition(R.anim.slide_in_right,R.anim.slide_in_left);

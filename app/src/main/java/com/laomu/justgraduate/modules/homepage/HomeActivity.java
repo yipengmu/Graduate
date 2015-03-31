@@ -1,5 +1,6 @@
 package com.laomu.justgraduate.modules.homepage;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
@@ -113,7 +114,7 @@ public class HomeActivity extends ActionBarActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            JGPageJumper.getInstance(this).openPageByActivity(HomeActivity.this, SettingsActivity.class);
+            JGPageJumper.getInstance(this).openPageByActivity(HomeActivity.this, new Intent(HomeActivity.this,SettingsActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

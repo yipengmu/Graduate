@@ -6,6 +6,7 @@
 
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
 
+        <item name="android:homeAsUpIndicator">@drawable/btn_actionbar_btn_back</item>
     </style>
 
     <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
