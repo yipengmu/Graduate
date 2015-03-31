@@ -20,6 +20,8 @@
         android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode" >
         <activity
@@ -52,7 +54,10 @@
             android:label="@string/title_activity_signin" >
         </activity>
 
-
+        <activity
+            android:name="com.laomu.justgraduate.modules.share.CommonShareActivity"
+            android:label="@string/share"
+            ></activity>
         <!--  3rd   -->
         <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
             android:configChanges="keyboardHidden|orientation"

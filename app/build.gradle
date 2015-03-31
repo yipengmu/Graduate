@@ -29,4 +29,5 @@ dependencies {
     //typeface
     compile 'uk.co.chrisjenx:calligraphy:2.0.1'
     compile files('libs/weibosdkcore_v3.0.1.jar')
+    compile files('libs/libammsdk.jar')
 }

@@ -10,7 +10,7 @@ import com.laomu.justgraduate.application.JGApplication;
 import com.laomu.justgraduate.common.datatype.Province;
 import com.laomu.justgraduate.common.datatype.School;
 import com.laomu.justgraduate.common.datatype.Univ;
-import com.laomu.justgraduate.modules.login.account.Account;
+import com.laomu.justgraduate.modules.login.account.UserInfo;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -26,12 +26,12 @@ public class OrmDbManager {
 	private Context mContext;
 	private TableHelper4db mTableHelper4db;
 
-    private Dao<Account, Integer> accountDao = null;
+    private Dao<UserInfo, Integer> accountDao = null;
     private Dao<Province, Integer> provinceDao = null;
     private Dao<School, Integer> schoolDao = null;
     private Dao<Univ, Integer> univDao = null;
 
-    private List<Account> accountsList;
+    private List<UserInfo> userinfoList;
     private List<Province> provincesList;
     private List<School> schoolsList;
     private List<Univ> univsList;
@@ -41,7 +41,7 @@ public class OrmDbManager {
 		mTableHelper4db = new TableHelper4db(mContext);
 
         try {
-            accountDao = mTableHelper4db.getDao(Account.class);
+            accountDao = mTableHelper4db.getDao(UserInfo.class);
             provinceDao = mTableHelper4db.getDao(Province.class);
             schoolDao = mTableHelper4db.getDao(School.class);
             univDao = mTableHelper4db.getDao(Univ.class);
@@ -58,7 +58,7 @@ public class OrmDbManager {
 		return ins ;
 	}
 	
-	public void addAccount(Account obj){
+	public void addAccount(UserInfo obj){
 		try {
             accountDao.create(obj);
             accountDao.clearObjectCache();
@@ -67,17 +67,17 @@ public class OrmDbManager {
 		}
 	}
 
-    public List<Account> getAllAccount(){
-        if(accountsList != null){
-            return accountsList;
+    public List<UserInfo> getAllUserInfo(){
+        if(userinfoList != null){
+            return userinfoList;
         }
 
         try {
-            accountsList = accountDao.queryForAll();
+            userinfoList = accountDao.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return accountsList;
+        return userinfoList;
     }
 
     public List<Province> getAllProvices(){

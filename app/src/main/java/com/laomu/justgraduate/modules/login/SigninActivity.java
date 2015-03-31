@@ -9,12 +9,10 @@ import android.widget.ListView;
 
 import com.laomu.justgraduate.R;
 import com.laomu.justgraduate.common.database.OrmDbManager;
-import com.laomu.justgraduate.common.database.old.DBManager;
 import com.laomu.justgraduate.common.datatype.Province;
 import com.laomu.justgraduate.common.datatype.School;
 import com.laomu.justgraduate.common.datatype.Univ;
-import com.laomu.justgraduate.common.manager.AccountManager;
-import com.laomu.justgraduate.modules.login.account.Account;
+import com.laomu.justgraduate.modules.login.account.UserInfo;
 import com.laomu.justgraduate.modules.login.adapter.SigninListviewAdapter;
 
 import java.util.ArrayList;
@@ -28,6 +26,7 @@ public class SigninActivity extends ActionBarActivity implements View.OnClickLis
     private List<Province> provincesList;
     private List<School> schoolsList;
     private List<Univ> univsList;
+    private List<UserInfo> userInfoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,7 @@ public class SigninActivity extends ActionBarActivity implements View.OnClickLis
         provincesList = (ArrayList<Province>) OrmDbManager.getInstance().getAllProvices();
         schoolsList = (ArrayList<School>) OrmDbManager.getInstance().getAllSchools();
         univsList = (ArrayList<Univ>) OrmDbManager.getInstance().getAllUniv();
+        userInfoList = (ArrayList<UserInfo>) OrmDbManager.getInstance().getAllUserInfo();
     }
 
 

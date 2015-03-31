@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.android.volley.Response;
@@ -15,7 +16,7 @@ import com.laomu.justgraduate.base.BaseActivity;
 import com.laomu.justgraduate.common.manager.AccountManager;
 import com.laomu.justgraduate.common.pagemapping.JGPageJumper;
 import com.laomu.justgraduate.http.utils.NetUtil;
-import com.laomu.justgraduate.modules.login.account.Account;
+import com.laomu.justgraduate.modules.login.account.UserInfo;
 import com.laomu.justgraduate.modules.login.net.LoginRequest;
 import com.laomu.justgraduate.utils.CommonUtils;
 import com.laomu.justgraduate.utils.LogUtils;
@@ -24,7 +25,8 @@ import java.util.HashMap;
 
 public class LoginActivity extends BaseActivity {
 
-    private Button btn_login,btn_signin_by_qq,btn_signin_by_weibo;
+    private Button btn_login;
+    private ImageView btn_signin_by_qq,btn_signin_by_weibo;
     private Button btn_signin;
     private EditText et_user_id;
     private EditText et_user_password;
@@ -47,8 +49,8 @@ public class LoginActivity extends BaseActivity {
 
     private void findViews() {
         btn_login = (Button) findViewById(R.id.btn_login);
-        btn_signin_by_weibo = (Button) findViewById(R.id.btn_signin_by_weibo);
-        btn_signin_by_qq = (Button) findViewById(R.id.btn_signin_by_qq);
+        btn_signin_by_weibo = (ImageView) findViewById(R.id.btn_signin_by_weibo);
+        btn_signin_by_qq = (ImageView) findViewById(R.id.btn_signin_by_qq);
 
         btn_signin = (Button) findViewById(R.id.btn_signin);
 
@@ -126,7 +128,7 @@ public class LoginActivity extends BaseActivity {
 
     private void handleLogin(boolean isSucc, String result) {
         if(isSucc){
-            AccountManager.getInstance().setUserBean((Account) NetUtil.convertJson2Obj(result, Account.class));
+            AccountManager.getInstance().setUserBean((UserInfo) NetUtil.convertJson2Obj(result, UserInfo.class));
             overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
             finish();
         }

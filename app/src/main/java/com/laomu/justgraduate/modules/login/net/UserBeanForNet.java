@@ -1,20 +1,20 @@
 package com.laomu.justgraduate.modules.login.net;
 
 import com.laomu.justgraduate.base.BaseNetBean;
-import com.laomu.justgraduate.modules.login.account.Account;
+import com.laomu.justgraduate.modules.login.account.UserInfo;
 
 /**
  * Created by yipengmu on 2014/11/27.
  */
 public class UserBeanForNet extends BaseNetBean {
 
-    private Account data;
+    private UserInfo data;
 
-    public Account getData() {
+    public UserInfo getData() {
         return data;
     }
 
-    public void setData(Account data) {
+    public void setData(UserInfo data) {
         this.data = data;
     }
 }

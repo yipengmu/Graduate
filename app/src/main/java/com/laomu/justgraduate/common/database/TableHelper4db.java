@@ -12,7 +12,7 @@ import com.j256.ormlite.table.TableUtils;
 import com.laomu.justgraduate.common.datatype.Province;
 import com.laomu.justgraduate.common.datatype.School;
 import com.laomu.justgraduate.common.datatype.Univ;
-import com.laomu.justgraduate.modules.login.account.Account;
+import com.laomu.justgraduate.modules.login.account.UserInfo;
 
 public class TableHelper4db extends OrmLiteSqliteOpenHelper {
 	
@@ -40,7 +40,7 @@ public class TableHelper4db extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase arg0, ConnectionSource arg1, int arg2,
 			int arg3) {
 		try {
-			TableUtils.dropTable(connectionSource, Account.class, true);
+			TableUtils.dropTable(connectionSource, UserInfo.class, true);
 //			TableUtils.dropTable(connectionSource, NoteBean.class, true);
 		} catch (SQLException e) {
 			e.printStackTrace();

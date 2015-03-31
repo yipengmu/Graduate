@@ -1,7 +1,6 @@
 package com.laomu.justgraduate.modules.login.net;
 
 import com.laomu.justgraduate.http.base.BaseRequest;
-import com.laomu.justgraduate.modules.login.account.Account;
 
 /**
  * Created by yipengmu on 2014/11/21.

@@ -85,14 +85,22 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="fastjson-1.1.40" level="project" />
-    <orderEntry type="library" exported="" name="ormlite-core-4.33" level="project" />
+    <orderEntry type="library" exported="" name="umeng_social_sdk" level="project" />
     <orderEntry type="library" exported="" name="calligraphy-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="umeng-analytics-v5.4.1" level="project" />
+    <orderEntry type="library" exported="" name="SocialSDK_QQZone_1" level="project" />
+    <orderEntry type="library" exported="" name="SocialSDK_QQZone_2" level="project" />
+    <orderEntry type="library" exported="" name="SocialSDK_QQZone_3" level="project" />
+    <orderEntry type="library" exported="" name="Volley" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
+    <orderEntry type="library" exported="" name="jpush-sdk-release1.7.1" level="project" />
+    <orderEntry type="library" exported="" name="libammsdk" level="project" />
+    <orderEntry type="library" exported="" name="ormlite-core-4.33" level="project" />
+    <orderEntry type="library" exported="" name="fastjson-1.1.40" level="project" />
+    <orderEntry type="library" exported="" name="SocialSDK_Sina" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="weibosdkcore_v3.0.1" level="project" />
-    <orderEntry type="library" exported="" name="Volley" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-20.0.0" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="ormlite-android-4.33" level="project" />
   </component>
 </module>

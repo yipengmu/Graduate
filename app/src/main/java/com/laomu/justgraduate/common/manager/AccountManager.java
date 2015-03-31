@@ -1,6 +1,6 @@
 package com.laomu.justgraduate.common.manager;
 
-import com.laomu.justgraduate.modules.login.account.Account;
+import com.laomu.justgraduate.modules.login.account.UserInfo;
 
 import java.util.List;
 
@@ -11,17 +11,17 @@ public class AccountManager {
 
     private static AccountManager ins = null;
 
-    private Account userBean;
+    private UserInfo userBean;
 
-    public List<Account> getAllAccount() {
-        return allAccount;
+    public List<UserInfo> getAllUserInfo() {
+        return allUserInfo;
     }
 
-    public void setAllAccount(List<Account> allAccount) {
-        this.allAccount = allAccount;
+    public void setAllUserInfo(List<UserInfo> allUserInfo) {
+        this.allUserInfo = allUserInfo;
     }
 
-    private List<Account> allAccount;
+    private List<UserInfo> allUserInfo;
 
     private AccountManager() {
     }
@@ -33,11 +33,11 @@ public class AccountManager {
         return ins;
     }
 
-    public Account getUserBean() {
+    public UserInfo getUserBean() {
         return userBean;
     }
 
-    public void setUserBean(Account userBean) {
+    public void setUserBean(UserInfo userBean) {
         this.userBean = userBean;
     }
 

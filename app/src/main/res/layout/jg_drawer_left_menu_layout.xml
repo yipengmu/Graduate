@@ -30,6 +30,7 @@
         android:layout_marginTop="30dp"
         android:layout_below="@+id/view_top_divider"
         android:padding="10dp"
+        android:visibility="gone"
         android:layout_height="wrap_content">
 
         <Button
@@ -57,7 +58,6 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:padding="10dp"
-        android:visibility="gone"
         android:layout_below="@+id/view_top_divider"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">

@@ -3,15 +3,15 @@ package com.laomu.justgraduate.utils;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -20,14 +20,19 @@ import android.widget.Toast;
 
 import com.laomu.justgraduate.R;
 import com.laomu.justgraduate.application.JGApplication;
+import com.laomu.justgraduate.modules.share.CommonShareActivity;
 import com.laomu.justgraduate.preference.PreferenceManager;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 public class CommonUtils {
@@ -213,5 +218,44 @@ public class CommonUtils {
         }
 
         return copySucc;
+    }
+
+    /** 根据image url 获取bitmap */
+    public static Bitmap getBitmapFromURL(String urlSrc) {
+        try {
+            if (TextUtils.isEmpty(urlSrc)) {
+                return null;
+            }
+
+            URL url = new URL(urlSrc);
+            if (url.getProtocol().equals("file")) { // 本地文件
+                String file_path = url.getPath();
+                if (TextUtils.isEmpty(file_path)) {
+                    return null;
+                }
+                File file = new File(file_path);
+                FileInputStream io = new FileInputStream(file);
+                Bitmap myBitmap = BitmapFactory.decodeStream(io);
+                io.close();
+                return myBitmap;
+            } else {
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                return myBitmap;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Intent getShareIntent(Context c, String shareText, String shareTitle) {
+        Intent intent = new Intent(c, CommonShareActivity.class);
+        intent.putExtra(CommonShareActivity.SHARE_TEXT_CONTENT, shareText);
+        intent.putExtra(CommonShareActivity.SHARE_TITLE, shareTitle);
+        return intent;
     }
 }

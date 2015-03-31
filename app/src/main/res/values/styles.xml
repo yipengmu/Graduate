@@ -80,4 +80,11 @@
         <item name="android:src">@drawable/small_divider</item>
     </style>
 
+
+    <style name="cent_secant">
+        <item name="android:background">#cccccc</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1px</item>
+    </style>
+
 </resources>

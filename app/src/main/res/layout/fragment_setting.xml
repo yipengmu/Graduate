@@ -23,7 +23,7 @@
             <!-- 推荐给微信好友 -->
 
             <RelativeLayout
-                android:id="@+id/recommond_to_weixin_layout"
+                android:id="@+id/rl_share_to_friend_layout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dip"
@@ -33,7 +33,7 @@
                     style="@style/setting_text_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recommend_to_weixin_friend" />
+                    android:text="@string/recommend_to_friend" />
 
                 <ImageView
                     android:layout_width="wrap_content"
