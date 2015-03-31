@@ -65,7 +65,7 @@ public class BaseActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void finish(){
         super.finish();
-        this.overridePendingTransition(R.anim.push_in_left, R.anim.abc_fade_out);
+        this.overridePendingTransition(R.anim.push_in_left, R.anim.jg_slide_out_right);
     }
 
 }

@@ -44,7 +44,7 @@ public class LoginActivity extends BaseActivity {
 
 //        Debug.stopMethodTracing();
 
-        et_user_id.setText("test6");
+        et_user_id.setText("11");
     }
 
     private void findViews() {

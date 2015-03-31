@@ -29,6 +29,9 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:hint="请输入账号"
+                android:textColorHint="@color/grey"
+                style="@style/dark_gray_12"
                 android:id="@+id/et_user_id" />
 
         </LinearLayout>
@@ -46,6 +49,9 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/grey"
+                style="@style/dark_gray_12"
+                android:hint="请输入密码"
                 android:id="@+id/et_user_password" />
 
         </LinearLayout>
