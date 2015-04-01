@@ -8,7 +8,7 @@ public class CommonDefine {
     public static final String[] TABBAR_FRAGMENT_PAGES = {"justgraduate","rankingbrand","gaokao","groupself"};
 
 
-    public static String REMOTE_ONLINE_HOST = "www.gangbiye.com";
+    public static String REMOTE_ONLINE_HOST = "www.gangbiye.cn";
 
     public final static String PREFS_FILE_NAME = "com.laomu.justgraduate";
     public static String KEY_SHORT_CUT_EXISTS = "key_short_cut_exists";

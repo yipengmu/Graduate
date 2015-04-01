@@ -68,9 +68,6 @@ public class BaseRequest{
         return ":";
     }
 
-    public String getApp() {
-        return "/GraduateServer";
-    }
 
     public void setPort(String port) {
         this.port = port;
@@ -122,7 +119,6 @@ public class BaseRequest{
         sb.append(getRequstType());
         sb.append(getHost());
         sb.append(getPort());
-        sb.append(getApp());
         sb.append(getApi());
         sb.append(getParamsInfo());
 

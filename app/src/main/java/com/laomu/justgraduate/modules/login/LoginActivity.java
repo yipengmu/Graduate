@@ -119,19 +119,11 @@ public class LoginActivity extends BaseActivity {
         final HashMap<String, String> params = new HashMap<String, String>();
         params.put("uid", userId);
         params.put("upassword", userPassword);
-        params.put("uname", "test");
 
         LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUid(userId);
+        loginRequest.uid = userId;
+        loginRequest.upassword = userPassword;
         loginRequest.sendStringRequest(listener);
-    }
-
-    private void handleLogin(boolean isSucc, String result) {
-        if(isSucc){
-            AccountManager.getInstance().setUserBean((UserInfo) NetUtil.convertJson2Obj(result, UserInfo.class));
-            overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
-            finish();
-        }
     }
 
     Response.Listener listener = new Response.Listener<String>() {
@@ -150,6 +142,15 @@ public class LoginActivity extends BaseActivity {
         }
 
     };
+
+
+    private void handleLogin(boolean isSucc, String result) {
+        if(isSucc){
+            AccountManager.getInstance().setUserBean((UserInfo) NetUtil.convertJson2Obj(result, UserInfo.class));
+            overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
+            finish();
+        }
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

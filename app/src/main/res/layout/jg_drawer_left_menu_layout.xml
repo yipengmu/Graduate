@@ -5,20 +5,34 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_home_dark">
 
-    <ImageView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_margin="30dp"
-        android:layout_gravity="center"
+        android:gravity="center_vertical"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/jg_icon_default_pic"
-        android:layout_height="wrap_content"
-        android:id="@+id/iv_user_face" />
+        android:id="@+id/ll_user_info"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/jg_icon_default_pic"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_user_face" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户名称"
+            style="@style/white_18"
+            android:id="@+id/textView3" />
+    </LinearLayout>
 
     <View
         android:layout_width="fill_parent"
-        android:layout_below="@+id/iv_user_face"
-        android:layout_margin="6dp"
+        android:layout_below="@+id/ll_user_info"
         android:id="@+id/view_top_divider"
         android:layout_height="0.1px"
         android:background="#ffffee" />
@@ -63,69 +77,75 @@
         android:layout_height="fill_parent">
 
 
-        <TextView
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:gravity="center"
-            android:padding="6dp"
-            style="@style/white_20"
-            android:layout_marginTop="4dp"
-            android:layout_height="wrap_content"
-            android:text="工资水平"
-            android:id="@+id/tv_paylevel" />
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:padding="6dp"
+                style="@style/white_18"
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content"
+                android:text="工资水平"
+                android:id="@+id/tv_paylevel" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:padding="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content"
+                style="@style/white_18"
+                android:text="工作地点"
+                android:id="@+id/tv_workplace" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:padding="6dp"
+                android:layout_marginTop="4dp"
+                style="@style/white_18"
+                android:layout_height="wrap_content"
+                android:text="所在行业"
+                android:id="@+id/tv_indurstry" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:padding="6dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                style="@style/white_18"
+                android:text="考研留学"
+                android:id="@+id/tv_kaoyanliuxue" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:padding="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content"
+                style="@style/white_18"
+                android:text="结婚生子"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/tv_weddingbirth" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_margin="6dp"
+                android:layout_height="0.1px"
+                android:background="#ffffee" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"
             android:gravity="center"
             android:padding="6dp"
-            android:layout_marginTop="4dp"
-            android:layout_height="wrap_content"
-            style="@style/white_20"
-            android:text="工作地点"
-            android:id="@+id/tv_workplace" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:gravity="center"
-            android:padding="6dp"
-            android:layout_marginTop="4dp"
-            style="@style/white_20"
-            android:layout_height="wrap_content"
-            android:text="所在行业"
-            android:id="@+id/tv_indurstry" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:gravity="center"
-            android:padding="6dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            style="@style/white_20"
-            android:text="考研留学"
-            android:id="@+id/tv_kaoyanliuxue" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:gravity="center"
-            android:padding="6dp"
-            android:layout_marginTop="4dp"
-            android:layout_height="wrap_content"
-            style="@style/white_20"
-            android:text="结婚生子"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/tv_weddingbirth" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_margin="6dp"
-            android:layout_height="0.1px"
-            android:background="#ffffee" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:gravity="center"
-            android:padding="6dp"
-            style="@style/white_20"
-            android:layout_marginTop="20dp"
+            style="@style/white_18"
             android:layout_height="wrap_content"
             android:text="查大学"
             android:id="@+id/tv_search_school" />
@@ -135,7 +155,7 @@
             android:gravity="center"
             android:padding="6dp"
             android:layout_height="wrap_content"
-            style="@style/white_20"
+            style="@style/white_18"
             android:layout_marginTop="4dp"
             android:text="学校美食"
             android:id="@+id/tv_school_food" />
@@ -145,10 +165,44 @@
             android:gravity="center"
             android:padding="6dp"
             android:layout_height="wrap_content"
-            style="@style/white_20"
+            style="@style/white_18"
             android:layout_marginTop="4dp"
             android:text="学长吐槽"
             android:id="@+id/tv_brother_tell" />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.1px"
+            android:background="#ffffee" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                style="@style/white_16"
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:padding="6dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="活动"
+                android:id="@+id/tv_menu_acts" />
+
+            <TextView
+                style="@style/white_16"
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:padding="6dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="反馈"
+                android:id="@+id/tv_menu_feedback" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </RelativeLayout>

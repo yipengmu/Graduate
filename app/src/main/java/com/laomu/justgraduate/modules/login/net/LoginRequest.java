@@ -6,25 +6,17 @@ import com.laomu.justgraduate.http.base.BaseRequest;
  * Created by yipengmu on 2014/11/21.
  */
 public class LoginRequest extends BaseRequest {
-    private String uid;
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+    public String uid;
+    public String upassword;
 
     public LoginRequest() {
-        super("AccountServlet");
+        super("login");
     }
 
     @Override
     public void addParams() {
-        getParams().put("api","findbyuid");
-
-        getParams().put("uid", getUid());
+        getParams().put("upassword",upassword);
+        getParams().put("uid", uid);
 
     }
 }

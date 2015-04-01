@@ -5,7 +5,7 @@ package com.laomu.justgraduate.common.config;
  */
 public class EnvConfig {
 
-    public static ENV env = ENV.LOCAL;
+    public static ENV env = ENV.REMOTE;
 
 
 
