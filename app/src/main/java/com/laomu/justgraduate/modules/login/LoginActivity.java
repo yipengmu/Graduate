@@ -130,13 +130,13 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void onResponse(String response) {
             JSONObject jo = (JSONObject) JSONObject.parse(response);
-            String result = jo.getString("ret");
-            if("success".equals(result)){
+            Integer result = jo.getJSONObject("ret").getInteger("retCode");
+            if(0 == result){
                 CommonUtils.toast("登录成功");
-                handleLogin(true,response);
+                handleLogin(true,jo);
             }else{
-                CommonUtils.toast("登录失败");
-                handleLogin(false,response);
+                CommonUtils.toast("登录失败:" + jo.getJSONObject("ret").getString("retMsg"));
+                handleLogin(false,jo);
             }
             LogUtils.d(Tag, response.toString());
         }
@@ -144,11 +144,13 @@ public class LoginActivity extends BaseActivity {
     };
 
 
-    private void handleLogin(boolean isSucc, String result) {
+    private void handleLogin(boolean isSucc, JSONObject result) {
         if(isSucc){
-            AccountManager.getInstance().setUserBean((UserInfo) NetUtil.convertJson2Obj(result, UserInfo.class));
+            AccountManager.getInstance().setUserBean((UserInfo) NetUtil.convertJson2Obj(result.get("data").toString(), UserInfo.class));
             overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
             finish();
+        }else {
+
         }
     }
 
