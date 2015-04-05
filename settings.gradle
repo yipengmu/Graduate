@@ -1,1 +1,1 @@
-include ':app', ':GraduateServer', ':viewpagerindicator'
+include ':app', ':viewpagerindicator'
