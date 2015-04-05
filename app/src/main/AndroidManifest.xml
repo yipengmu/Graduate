@@ -26,6 +26,7 @@
         tools:ignore="HardcodedDebugMode" >
         <activity
             android:name="com.laomu.justgraduate.modules.homepage.HomeActivity"
+            android:theme="@style/StyledIndicators"
             android:label="@string/app_name" >
         </activity>
         <activity

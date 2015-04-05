@@ -1,5 +1,7 @@
 package com.laomu.justgraduate.base;
 
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,9 +11,12 @@ import android.view.View;
 
 import com.laomu.justgraduate.R;
 
-public class BaseActivity extends ActionBarActivity implements View.OnClickListener{
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-    private ActionBar androidActionBar;
+public class BaseActivity extends FragmentActivity implements View.OnClickListener{
+
+    private android.app.ActionBar androidActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +27,7 @@ public class BaseActivity extends ActionBarActivity implements View.OnClickListe
 
     public void initAndoridActionBar() {
         try {
-            androidActionBar = getSupportActionBar();
+            androidActionBar = getActionBar();
             if (androidActionBar != null) {
                 androidActionBar.setDisplayShowTitleEnabled(true);
                 androidActionBar.setDisplayHomeAsUpEnabled(true);
@@ -36,7 +41,10 @@ public class BaseActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

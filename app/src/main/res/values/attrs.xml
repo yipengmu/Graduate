@@ -21,5 +21,5 @@
         <item>@string/bag</item>
         <item>@string/accessories</item>
     </string-array>
-
+    <attr name="fontPath" format="string" />
 </resources>

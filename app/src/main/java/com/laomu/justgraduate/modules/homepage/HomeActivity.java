@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.laomu.justgraduate.R;
 import com.laomu.justgraduate.application.CommonDefine;
+import com.laomu.justgraduate.base.BaseActivity;
 import com.laomu.justgraduate.common.custormviews.JGTabbarView;
 import com.laomu.justgraduate.common.pagemapping.JGPageJumper;
 import com.laomu.justgraduate.modules.hotactions.JGHotActionsFragment;
@@ -23,7 +24,7 @@ import com.laomu.justgraduate.modules.homepage.tabbar.JustGraduateFragment;
 import com.laomu.justgraduate.modules.homepage.tabbar.RankingBandFragment;
 
 
-public class HomeActivity extends ActionBarActivity
+public class HomeActivity extends BaseActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, JGHotActionsFragment.OnFragmentInteractionListener, RankingBandFragment.OnFragmentInteractionListener, JGTabbarView.OnTabSelectedListener {
 
     /**
@@ -31,9 +32,6 @@ public class HomeActivity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private JGTabbarView mTabbarViewGroup;
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
     private CharSequence mTitle;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
@@ -86,13 +84,6 @@ public class HomeActivity extends ActionBarActivity
         mTitle = CommonDefine.DRAWER_STRING_LIST_CONTENT[number - 1];
     }
 
-    public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,7 +92,6 @@ public class HomeActivity extends ActionBarActivity
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.home, menu);
-            restoreActionBar();
             return true;
         }
         return super.onCreateOptionsMenu(menu);
